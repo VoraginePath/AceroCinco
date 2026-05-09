@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Site</title>
+  <meta name="description" content="A personal site and curated link hub." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Your Site" />
+  <meta property="og:description" content="A personal site and curated link hub." />
+  <meta property="og:image" content="/assets/og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.ico" />
+
+  <!-- Fonts: Cabinet Grotesk (Fontshare) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+
+  <!-- Fonts: Inter (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Skip to content (accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Mobile sidebar toggle button -->
+  <button class="sidebar-toggle" aria-label="Open sidebar" aria-expanded="false" aria-controls="sidebar">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+
+  <div class="site-wrapper">
+
+    <!-- LEFT SIDEBAR -->
+    <aside id="sidebar" class="sidebar" aria-label="Useful links">
+
+      <!-- Logo / site name -->
+      <div class="sidebar-header">
+        <a href="/" class="site-logo" aria-label="Home">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect width="28" height="28" rx="4" fill="var(--color-primary)"/>
+            <text x="14" y="19" text-anchor="middle" font-size="14"
+                  font-family="var(--font-display)" font-weight="800" fill="white">YS</text>
+          </svg>
+          <span class="site-name">Your Site</span>
+        </a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+          <!-- Moon icon (dark mode active) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation / Useful Links -->
+      <nav class="sidebar-nav" aria-label="Useful links navigation">
+
+        <section class="link-group">
+          <h2 class="link-group-label">Tools</h2>
+          <ul role="list">
+            <li>
+              <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Claude AI
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> ChatGPT
+              </a>
+            </li>
+            <li>
+              <a href="https://excalidraw.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Excalidraw
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="link-group">
+          <h2 class="link-group-label">Resources</h2>
+          <ul role="list">
+            <li>
+              <a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> MDN Web Docs
+              </a>
+            </li>
+            <li>
+              <a href="https://css-tricks.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> CSS-Tricks
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> GitHub
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="link-group">
+          <h2 class="link-group-label">Reading</h2>
+          <ul role="list">
+            <li>
+              <a href="https://hnrss.github.io/newest" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Hacker News
+              </a>
+            </li>
+            <li>
+              <a href="https://lobste.rs" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Lobsters
+              </a>
+            </li>
+          </ul>
+        </section>
+
+      </nav>
+    </aside>
+
+    <!-- Mobile overlay backdrop -->
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="main-content">
+      <header class="content-header">
+        <h1 class="page-title">Welcome</h1>
+        <p class="page-subtitle">A personal space for notes, links, and things worth keeping.</p>
+      </header>
+
+      <!-- About section -->
+      <section class="content-block" aria-labelledby="section-about">
+        <h2 id="section-about" class="block-title">About</h2>
+        <div class="block-body">
+          <p>This is your personal site. Use the sidebar to navigate curated links, and this main area to keep notes, updates, or anything else you want to track.</p>
+          <p>Edit <code>index.html</code> to update your content. Add new sections using the patterns in the plan, and push to GitHub for automatic deployment via Vercel.</p>
+        </div>
+      </section>
+
+      <!-- Projects card grid -->
+      <section class="content-block" aria-labelledby="section-projects">
+        <h2 id="section-projects" class="block-title">Projects</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card-title">Project One</h3>
+            <p class="card-body">A short description of what this project is and why it matters.</p>
+            <a href="#" class="card-link">View →</a>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Project Two</h3>
+            <p class="card-body">Another project you are working on or have shipped recently.</p>
+            <a href="#" class="card-link">View →</a>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Project Three</h3>
+            <p class="card-body">Add as many cards as you need — the grid adapts automatically.</p>
+            <a href="#" class="card-link">View →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Notes section -->
+      <section class="content-block" aria-labelledby="section-notes">
+        <h2 id="section-notes" class="block-title">Notes</h2>
+        <div class="block-body">
+          <p>Use this section for anything you want to keep handy — links you read, ideas, or short-form writing.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
