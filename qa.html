@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Q&A - PoE2 Hub</title>
+  <meta name="description" content="Resumen completo del Q&A entre GGG y ZiggyD sobre el parche 0.5.0 de Path of Exile 2." />
+  <meta property="og:title" content="Video Q&A - PoE2 Hub" />
+  <meta property="og:description" content="Resumen completo del Q&A de GGG sobre el parche 0.5.0." />
+  <link rel="icon" href="/assets/favicon.ico" />
+
+  <!-- Cabinet Grotesk via Fontshare -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+
+  <!-- Inter via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Ir al contenido</a>
+
+  <button class="sidebar-toggle" aria-label="Abrir barra lateral" aria-expanded="false" aria-controls="sidebar">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+
+  <div class="site-wrapper">
+
+    <aside id="sidebar" class="sidebar" aria-label="Navegación">
+      <div class="sidebar-header">
+        <a href="/" class="site-logo" aria-label="PoE2 Hub inicio">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect width="28" height="28" rx="4" fill="var(--color-primary)"/>
+            <text x="14" y="19" text-anchor="middle" font-size="14"
+                  font-family="var(--font-display)" font-weight="800" fill="white">P2</text>
+          </svg>
+          <span class="site-name">PoE2 Hub</span>
+        </a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Cambiar a modo claro">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Navegación principal">
+        <section class="link-group">
+          <h2 class="link-group-label">Volver</h2>
+          <ul role="list">
+            <li>
+              <a href="/" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Inicio
+              </a>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </aside>
+
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <main id="main-content" class="main-content">
+
+      <header class="content-header">
+        <h1 class="page-title">Video Q&A de Scorpius</h1>
+        <p class="page-subtitle">Resumen de 19 minutos del Q&A entre GGG y ZiggyD (2.5 horas) que siguió al reveal oficial del parche 0.5.0. Información detallada sobre clases, roadmap 1.0, balance y mucho más.</p>
+      </header>
+
+      <!-- Clases y Roadmap 1.0 -->
+      <section class="content-block" aria-labelledby="clases-title">
+        <h2 id="clases-title" class="block-title">🎭 Clases y Roadmap 1.0</h2>
+        <div class="block-body">
+          <p><strong>No hay nueva clase en 0.5</strong> — GGG dice que construir una nueva clase lleva más de un ciclo; querían establecer primero el juego.</p>
+          <p>Las nuevas clases se están trabajando en segundo plano.</p>
+          <p><strong>La versión 1.0 incluirá:</strong> Actos 5 y 6, nuevas clases y mucho otro contenido — confirmado que se lanza <strong>más adelante este año</strong>.</p>
+          <p><strong>No hay 0.6 planeado</strong> — va directamente de 0.5 a 1.0.</p>
+        </div>
+      </section>
+
+      <!-- Runas de Aldur -->
+      <section class="content-block" aria-labelledby="runas-title">
+        <h2 id="runas-title" class="block-title">💎 Runas de Aldur — Detalles Extra</h2>
+        <div class="block-body">
+          <p><strong>116 nuevas runas</strong> totales en 0.5.</p>
+          <p><strong>Runa de Legado de Olroth:</strong> Colócala en un único Kalguuran → lo destruye → roba uno de sus mods → lo convierte en una runa única que puedes encajar en otro objeto de la misma clase.</p>
+          <p><strong>Runa Maestra:</strong> Mejora una runa existente más allá de su nivel máximo normal, creando una \"runa perfecta\" — extraíble con Incursión e intercambiable.</p>
+          <p><strong>Runas de meta-craft</strong> confirmadas: coloca, tira mods, luego reemplaza con otra runa.</p>
+          <p><strong>Runas temáticas de meta-craft:</strong> Cronomagia para botas, tema de enrage para cascos, decay/DoT para guantes.</p>
+          <p>El empoderamiento de runas usa un <strong>sistema de mods de monstruo unificado</strong> — todas las fuentes de dificultad (runas, Delirium, etc.) se canalizan a través del mismo sistema, y más dificultad siempre significa más recompensas.</p>
+          <p><strong>En Expedición:</strong> solo UNA runa por remanente se lleva hacia el siguiente — no todas ellas. El orden de remanentes importa estratégicamente; técnicamente puedes acumular hasta <strong>22 mods de monstruo extra</strong> en una cadena completa de 12 remanentes.</p>
+          <p>Los mods de monstruo se muestran como <strong>símbolos rúnicos en una barra</strong>, no líneas de texto, para reducir el desorden de UI.</p>
+        </div>
+      </section>
+
+      <!-- Runeforge / Runic Ward -->
+      <section class="content-block" aria-labelledby="runeforge-title">
+        <h2 id="runeforge-title" class="block-title">⚒️ Runeforge / Protección Rúnica</h2>
+        <div class="block-body">
+          <p><strong>Tipos base de campaña temprana</strong> dan Protección Rúnica como mejora pura sin desventajas — los cambios solo aparecen en bases de endgame.</p>
+          <p>Cuando la mecánica eventualmente vaya al juego base, está <strong>planeado que sea opcional</strong>, no obligatorio para cada construcción.</p>
+          <p>Todos los resultados de mejora de armadura no-aleatorios están <strong>elaborados manualmente</strong> (sin fórmulas) y <strong>previsibles antes de comprometerse</strong>.</p>
+          <p><strong>Los resultados de armadura única de Kalguuran son completamente aleatorios</strong> y no pueden ser previsualizados.</p>
+          <p>Nuevo escudo revelado (híbrido fuerza/destreza): Forjarlo rúnicamente puede resultar en una base de ES completa con parry, base de evasión completa con parry, o base de fuerza completa — tres caminos distintos.</p>
+          <p>Las runas en armadura <strong>durante la campaña están siendo mejoradas</strong> — GGG reconoció que eran demasiado débiles y no estaban resolviendo el problema \"Necesito ser más resistente\" para el que fueron diseñadas.</p>
+        </div>
+      </section>
+
+      <!-- Habilidades Kalguuran -->
+      <section class="content-block" aria-labelledby="kalguuran-title">
+        <h2 id="kalguuran-title" class="block-title">✨ Habilidades Kalguuran</h2>
+        <div class="block-body">
+          <p>~<strong>25 habilidades Kalguuran</strong> en 0.5.</p>
+          <p><strong>Solo requisitos de nivel</strong>, sin requisitos de atributo, sin colores de socket — diseñadas para funcionar en todas las clases.</p>
+          <p>Diseñadas para interactuar con buffs y debuffs existentes en el juego.</p>
+          <p>GGG planea añadir más si los jugadores responden bien a ellas.</p>
+        </div>
+      </section>
+
+      <!-- Expedición y El Océano -->
+      <section class="content-block" aria-labelledby="expedicion-title">
+        <h2 id="expedicion-title" class="block-title">🌊 Expedición y El Océano</h2>
+        <div class="block-body">
+          <p>\"Cuadernos\" ahora se refieren específicamente a <strong>exploración oceánica</strong> — el término antiguo ha cambiado de significado.</p>
+          <p>Cuadernos especiales revelan secciones oceánicas completas con modificadores adicionales temáticos de Expedición (más explosiones, radios más grandes) — similar a cómo funcionan las tabletas en el Atlas regular.</p>
+          <p>Algunos cuadernos <strong>garantizan jefes específicos</strong> (ej: Isla de Allroth).</p>
+          <p>Cada isla de Gran Expedición tiene <strong>2–3 tipos de aparición única</strong> que no aparecen en otro lugar.</p>
+          <p>El océano tiene una sensación <strong>similar a Delve con expansión infinita</strong> — cuanto más profundo vayas, más hay.</p>
+          <p><strong>Easter egg:</strong> Ve lo suficientemente lejos en la dirección correcta del océano y puedes encontrar <strong>Wraeclast mismo</strong>, incluyendo dónde sucedió el apocalipsis de la Bestia. Actualmente sin propósito de gameplay — cambiará con los Actos 5 y 6.</p>
+          <p><strong>Arqueología Extrema</strong> (mecánica de explosión gigante) sigue en el juego para Expedición regular a través de un nodo maestro, pero <strong>no está disponible para Gran Expediciones o Islas Oceánicas</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Atlas - Aclaraciones Claves -->
+      <section class="content-block" aria-labelledby="atlas-title">
+        <h2 id="atlas-title" class="block-title">🗺️ Reformulación del Atlas — Aclaraciones Clave</h2>
+        <div class="block-body">
+          <p><strong>Diseño de Atlas fijo</strong> = la progresión cooperativa ahora funciona correctamente. Completar un mapa de punto pasivo lo completa para todo el grupo.</p>
+          <p><strong>Excepción:</strong> mapas como el Espejo Grande no se completan para el grupo, ya que otorgan recompensas de meta-progresión individual.</p>
+          <p><strong>Todos en un grupo pueden hacer los enfrentamientos de jefe apogeo del otro juntos</strong>.</p>
+          <p>La geografía del Atlas ahora coincide con <strong>el mapa real de Wraeclast</strong>; las ligas se colocan geográficamente precisas.</p>
+          <p>Las revelaciones de torres y niebla aún existen; los Proyectos Grandes aún existen con cambios no especificados.</p>
+          <p><strong>Apilamiento de tabletas:</strong> colocar 3 de la misma tableta bloquea esa mecánica de liga en esos mapas, impidiendo que otros aparezcan (o puedes mezclar).</p>
+          <p>El árbol del Atlas tiene <strong>300+ nodos</strong>, pero la Fortaleza solo requiere ~<strong>150 mapas</strong> para completarse (algunas áreas dan más de un punto).</p>
+          <p><strong>Ruta más corta al jefe apogeo</strong> a través de la Fortaleza: ~<strong>40–50 mapas</strong>.</p>
+          <p><strong>El bioma de Grieta</strong> es el más cercano a tu ubicación inicial — ~4–5 mapas desde la torre.</p>
+          <p>Cada línea de búsqueda de liga está diseñada para llevar aproximadamente <strong>una noche sólida de juego</strong> (pocas horas para un jugador promedio).</p>
+          <p>Cada dirección desde el área inicial golpea algo interesante dentro de pocos mapas — <strong>literalmente no puedes perder contenido</strong>.</p>
+          <p>Tiempo promedio de finalización de mapa para un jugador regular: <strong>~15 minutos por mapa</strong> (figura de datos real de GGG).</p>
+          <p><strong>Filosofía de endgame:</strong> todo hasta el primer apogeo es un desafío difícil; <strong>la agricultura posterior a apogeo debería sentirse cada vez más divina</strong>.</p>
+        </div>
+      </section>
+
+      <!-- Maestros del Atlas -->
+      <section class="content-block" aria-labelledby="maestros-title">
+        <h2 id="maestros-title" class="block-title">👑 Maestros del Atlas</h2>
+        <div class="block-body">
+          <p>Cada maestro tiene <strong>4 filas de habilidades</strong> — cada fila desbloqueada completando una misión, dando 1 punto asignable por fila.</p>
+          <p>Puedes especializarte completamente en una fila o mezclar en todas.</p>
+          <p><strong>Se añadirán más maestros</strong> en futuras ligas.</p>
+          <p><strong>Maestro futuro filtrado:</strong> un Faraón; el PNJ Maestro de Runas podría convertirse en un maestro del Atlas si las Runas de Aldur van al juego base.</p>
+          <p><strong>Dorani</strong> (del contenido anterior) está confirmado como maestro del Atlas en 0.5.</p>
+        </div>
+      </section>
+
+      <!-- Templo de Atzoatl -->
+      <section class="content-block" aria-labelledby="templo-title">
+        <h2 id="templo-title" class="block-title">🏛️ Templo de Atzoatl (Yendo al Juego Base)</h2>
+        <div class="block-body">
+          <p>Obtiene su propia sección de árbol del Atlas y línea de búsqueda.</p>
+          <p><strong>La estrategia de serpiente está siendo removida</strong> — las habitaciones desconectadas ahora crean una habitación conectora vacía, eliminando el exploit. GGG llamó el botín actual de estrategia de serpiente \"1,000% inaceptable\".</p>
+          <p>Las salas de recompensa por <strong>matar arquitectos han sido mejoradas</strong> — no eran lo suficientemente recompensadoras antes.</p>
+          <p>Los nodos del árbol del Atlas se aplican al Templo.</p>
+        </div>
+      </section>
+
+      <!-- Cambios de Balance -->
+      <section class="content-block" aria-labelledby="balance-title">
+        <h2 id="balance-title" class="block-title">⚖️ Cambios de Balance</h2>
+
+        <h3 style="font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--color-text); margin-top: var(--space-6); margin-bottom: var(--space-3);">Reformulación de Leech</h3>
+        <div class="block-body">
+          <p><strong>Solo una fuente</strong> — solo el hit más grande hace leech a la vez.</p>
+          <p>El daño está <strong>limitado para el cálculo de leech</strong> (probablemente cientos de miles) — aún causas daño completo pero el leech usa el valor limitado.</p>
+          <p>Duplicar tu porcentaje de leech ahora <strong>siempre duplica la recuperación</strong> (sin más retornos decrecientes).</p>
+          <p><strong>Leech instantáneo removido</strong>.</p>
+          <p>El leech funciona consistentemente en todos los tipos de enemigos.</p>
+          <p>Tasa de recuperación objetivo para un personaje invertido: <strong>orb de vida completo en ~3 segundos</strong>.</p>
+          <p>Los valores de leech temprano están siendo mejorados ya que ahora están limitados.</p>
+        </div>
+
+        <h3 style="font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--color-text); margin-top: var(--space-6); margin-bottom: var(--space-3);">Cambios de Defensa</h3>
+        <div class="block-body">
+          <p><strong>Tipos base de armadura y evasión mejorados</strong> desde el Acto 3 en adelante — los jugadores mueren significativamente más de lo previsto.</p>
+          <p>Escudo de Energía debilitado — demasiada recuperación disponible demasiado fácilmente; algunos valores atípicos específicamente debilitados.</p>
+          <p><strong>Danza de Fantasmas + ES significativamente debilitado</strong>; evasión pura + Danza de Fantasmas siendo aumentada en su lugar.</p>
+          <p>Fórmula de Deflexión reformulada — actualmente demasiado bueno por inversión mínima, nodos del árbol pasivo demasiado débiles.</p>
+          <p>Armadura recibe más nodos de cluster en el árbol pasivo.</p>
+          <p>La armadura aún tiene la <strong>tasa de muerte más alta en un 300%</strong> — sin corrección exacta aún, pero reconocida como prioridad.</p>
+        </div>
+
+        <h3 style="font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--color-text); margin-top: var(--space-6); margin-bottom: var(--space-3);">Otro Balance</h3>
+        <div class="block-body">
+          <p><strong>+Niveles de habilidad en objetos debilitados</strong> — algo de poder redistribuido así que versiones de alto nivel aún existen, solo menos extremas.</p>
+          <p><strong>Tasas de caída de orbe de transmutación ligeramente debilitadas</strong> — el crafting de endgame temprano era demasiado fácil.</p>
+          <p><strong>Intentos infinitos en jefes apogeo</strong> — una vez que ganas acceso, tienes intentos ilimitados. Pierdes acceso solo si la instancia se agota por inactividad.</p>
+          <p><strong>Conteos de portal cambiados</strong> — ahora aproximadamente menos un portal por cada dos modificadores (era menos uno por modificador).</p>
+        </div>
+      </section>
+
+      <!-- Mejoras de Campaña -->
+      <section class="content-block" aria-labelledby="campaign-title">
+        <h2 id="campaign-title" class="block-title">🎮 Mejoras de Campaña</h2>
+        <div class="block-body">
+          <p><strong>Área de Acorazado dividida por la mitad</strong> — ahora una zona en lugar de dos, ligeramente más larga pero más rápida en general.</p>
+          <p><strong>Quadrilla el Gorila</strong> ahora siempre aparece en el centro directo de las Ruinas de la Jungla.</p>
+          <p><strong>Bóvedas de Veneno reformuladas</strong> — salida extra añadida cerca de la salida de la zona como atajo; todas las serpientes ahora se abren camino hacia la entrada así que puedes seguirlas para encontrar la mazmorra.</p>
+          <p><strong>Aldea de Gam</strong> ahora tiene una carretera de adoquines que lleva directamente a la herrería.</p>
+        </div>
+      </section>
+
+      <!-- Habilidades y Progresión -->
+      <section class="content-block" aria-labelledby="skills-title">
+        <h2 id="skills-title" class="block-title">💫 Habilidades y Progresión</h2>
+        <div class="block-body">
+          <p><strong>Ojo del Invierno</strong> (\"esa cosa redonda de proyectil de hielo giratorio\") puede ser movida a un nivel de habilidad más temprano — GGG reconoció que actualmente está colocada demasiado tarde.</p>
+          <p>El reordenamiento general de habilidades bloqueadas demasiado tarde está en la agenda.</p>
+          <p><strong>Fantasía pura de difusión de incendio DoT/Ignite</strong> está en la lista de correcciones pero <strong>no llegó a 0.5</strong> — probablemente llegará en un <strong>parche interim entre 0.5 y 1.0</strong>.</p>
+          <p><strong>Mejoras de balance de Cronomagia y Gemling</strong> queridas pero no completamente completadas para 0.5.</p>
+          <p>Los parches interim/eventos entre 0.5 y 1.0 están <strong>confirmados como algo que GGG quiere hacer</strong>.</p>
+        </div>
+      </section>
+
+      <!-- QoL y Sistemas -->
+      <section class="content-block" aria-labelledby="qol-title">
+        <h2 id="qol-title" class="block-title">✨ QoL y Sistemas</h2>
+        <div class="block-body">
+          <p><strong>Guía de construcción en juego con instalación de un clic</strong> — los sitios comunitarios pueden alojar un enlace que añade una construcción directamente a tu cuenta, como filtros de objetos. Sin gestión de archivos. Especialmente importante para jugadores de consola. La documentación se pone en vivo en el día del reveal.</p>
+          <p><strong>Reformulación de pausa</strong> (pasar el ratón para leer buffs/mods de monstruo mientras se pausa) está planeado pero <strong>no en 0.5</strong>.</p>
+          <p><strong>Escalado de UI significativamente mejorado</strong> — objetivo de compatibilidad con Steam Deck en 1.0.</p>
+        </div>
+      </section>
+
+      <!-- Spirit Walker -->
+      <section class="content-block" aria-labelledby="spirit-title">
+        <h2 id="spirit-title" class="block-title">👻 Spirit Walker (Ascendencia de Cazadora)</h2>
+        <div class="block-body">
+          <p>Los compañeros bestia han tenido su <strong>daño triplicado</strong>.</p>
+          <p><strong>Temporizador de revivir más largo</strong> para compañeros — meant to be meaningful individual units, not a swarm.</p>
+          <p>GGG está dando a cada jefe bestia domable un <strong>rol específico</strong> (ej: bueno en aturdimiento, congelación, etc.).</p>
+          <p>Nuevas pasivas de compañero siendo añadidas al árbol pasivo.</p>
+          <p>La corrección de \"Tame Beast gem starting at a higher level when you first ascend\" está siendo corregida.</p>
+        </div>
+      </section>
+
+      <!-- Economía y Rareza -->
+      <section class="content-block" aria-labelledby="economy-title">
+        <h2 id="economy-title" class="block-title">💰 Economía y Rareza</h2>
+        <div class="block-body">
+          <p>GGG aún quiere <strong>eventualmente remover rareza</strong> del juego pero no ha encontrado un buen reemplazo todavía.</p>
+          <p>Cada liga ahora tiene <strong>perfiles de recompensa más distintos</strong> — si una moneda es valiosa, puedes específicamente farmear la liga que la suelta.</p>
+          <p><strong>Los sumideros de Exalt son inevitables</strong> (confirmado); <strong>sumideros de Divino</strong> implícitos para estar en progreso, pero sin comentario dado.</p>
+        </div>
+      </section>
+
+      <!-- Jefes y Pruebas -->
+      <section class="content-block" aria-labelledby="bosses-title">
+        <h2 id="bosses-title" class="block-title">👹 Jefes y Pruebas</h2>
+        <div class="block-body">
+          <p><strong>~15 nuevos jefes</strong> en 0.5.</p>
+          <p>El jefe apogeo de Runas de Aldur <strong>comenzó como un minijefe aleatorio del Acto 5</strong> y fue dramáticamente escalado.</p>
+          <p><strong>Jefe apogeo de Delirium</strong> = la Voz Extraña finalmente obtiene una forma física.</p>
+          <p>Hay una <strong>conexión de tradición entre Ritual y Delirium</strong> que los jugadores descubrirán en juego.</p>
+          <p><strong>Juicios de los Ancestros (ToDA)</strong> — la tercera prueba — <strong>no está en 0.5</strong>. GGG dice que es 50/50 si llega a 1.0.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
