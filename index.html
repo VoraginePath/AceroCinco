@@ -3,22 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Site</title>
-  <meta name="description" content="A personal site and curated link hub." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Your Site" />
-  <meta property="og:description" content="A personal site and curated link hub." />
+  <title>PoE2 Hub — Return of the Ancients</title>
+  <meta name="description" content="Personal Path of Exile 2 hub. Patch 0.5.0 notes, useful tools, trade links, and resources." />
+  <meta property="og:title" content="PoE2 Hub — Return of the Ancients" />
+  <meta property="og:description" content="Personal Path of Exile 2 reference site for patch 0.5.0." />
   <meta property="og:image" content="/assets/og-image.png" />
-  <meta property="og:type" content="website" />
-
-  <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.ico" />
 
-  <!-- Fonts: Cabinet Grotesk (Fontshare) -->
+  <!-- Cabinet Grotesk via Fontshare -->
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
 
-  <!-- Fonts: Inter (Google Fonts) -->
+  <!-- Inter via Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet" />
@@ -27,12 +22,11 @@
 </head>
 <body>
 
-  <!-- Skip to content (accessibility) -->
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Mobile sidebar toggle button -->
+  <!-- Mobile sidebar toggle -->
   <button class="sidebar-toggle" aria-label="Open sidebar" aria-expanded="false" aria-controls="sidebar">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
       <line x1="3" y1="6" x2="21" y2="6"/>
       <line x1="3" y1="12" x2="21" y2="12"/>
       <line x1="3" y1="18" x2="21" y2="18"/>
@@ -41,18 +35,19 @@
 
   <div class="site-wrapper">
 
-    <!-- LEFT SIDEBAR -->
-    <aside id="sidebar" class="sidebar" aria-label="Useful links">
+    <!-- ═══════════════════════════════
+         LEFT SIDEBAR — PoE2 Tools & Links
+         ═══════════════════════════════ -->
+    <aside id="sidebar" class="sidebar" aria-label="PoE2 tools and resources">
 
-      <!-- Logo / site name -->
       <div class="sidebar-header">
-        <a href="/" class="site-logo" aria-label="Home">
+        <a href="/" class="site-logo" aria-label="PoE2 Hub home">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
             <rect width="28" height="28" rx="4" fill="var(--color-primary)"/>
             <text x="14" y="19" text-anchor="middle" font-size="14"
-                  font-family="var(--font-display)" font-weight="800" fill="white">YS</text>
+                  font-family="var(--font-display)" font-weight="800" fill="white">P2</text>
           </svg>
-          <span class="site-name">Your Site</span>
+          <span class="site-name">PoE2 Hub</span>
         </a>
         <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
           <!-- Moon icon (dark mode active) -->
@@ -63,62 +58,119 @@
         </button>
       </div>
 
-      <!-- Navigation / Useful Links -->
-      <nav class="sidebar-nav" aria-label="Useful links navigation">
+      <nav class="sidebar-nav" aria-label="PoE2 resources navigation">
 
         <section class="link-group">
-          <h2 class="link-group-label">Tools</h2>
+          <h2 class="link-group-label">Trading</h2>
           <ul role="list">
             <li>
-              <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> Claude AI
+              <a href="https://www.pathofexile.com/trade2" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Official Trade
               </a>
             </li>
             <li>
-              <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> ChatGPT
+              <a href="https://poe.ninja" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> poe.ninja
               </a>
             </li>
             <li>
-              <a href="https://excalidraw.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> Excalidraw
+              <a href="https://poe2.ninja" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> poe2.ninja
               </a>
             </li>
           </ul>
         </section>
 
         <section class="link-group">
-          <h2 class="link-group-label">Resources</h2>
+          <h2 class="link-group-label">Build Planning</h2>
           <ul role="list">
             <li>
-              <a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> MDN Web Docs
+              <a href="https://maxroll.gg/poe2" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Maxroll PoE2
               </a>
             </li>
             <li>
-              <a href="https://css-tricks.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> CSS-Tricks
+              <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Path of Building
               </a>
             </li>
             <li>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> GitHub
+              <a href="https://mobalytics.gg/poe-2" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Mobalytics
               </a>
             </li>
           </ul>
         </section>
 
         <section class="link-group">
-          <h2 class="link-group-label">Reading</h2>
+          <h2 class="link-group-label">Wiki & Data</h2>
           <ul role="list">
             <li>
-              <a href="https://hnrss.github.io/newest" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> Hacker News
+              <a href="https://www.poewiki.net" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> PoE Wiki
               </a>
             </li>
             <li>
-              <a href="https://lobste.rs" target="_blank" rel="noopener noreferrer" class="sidebar-link">
-                <span class="link-dot" aria-hidden="true"></span> Lobsters
+              <a href="https://pathofexile2.wiki.fextralife.com" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Fextralife
+              </a>
+            </li>
+            <li>
+              <a href="https://poe2db.tw" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> poe2db
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="link-group">
+          <h2 class="link-group-label">Crafting</h2>
+          <ul role="list">
+            <li>
+              <a href="https://www.craftofexile.com/?v=poe2" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Craft of Exile
+              </a>
+            </li>
+            <li>
+              <a href="https://filterblade.xyz" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> FilterBlade
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="link-group">
+          <h2 class="link-group-label">Community</h2>
+          <ul role="list">
+            <li>
+              <a href="https://www.reddit.com/r/PathOfExile2" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> r/PathOfExile2
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.gg/pathofexile" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://www.pathofexile.com/forum/view-forum/3253" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> GGG Forums
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="link-group">
+          <h2 class="link-group-label">Official</h2>
+          <ul role="list">
+            <li>
+              <a href="https://www.pathofexile.com/forum/view-forum/3259" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Patch Notes
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@pathofexile" target="_blank" rel="noopener noreferrer" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> YouTube
               </a>
             </li>
           </ul>
@@ -127,52 +179,137 @@
       </nav>
     </aside>
 
-    <!-- Mobile overlay backdrop -->
     <div class="sidebar-backdrop" aria-hidden="true"></div>
 
-    <!-- MAIN CONTENT -->
+    <!-- ═══════════════════════════════
+         MAIN CONTENT — Patch 0.5.0
+         ═══════════════════════════════ -->
     <main id="main-content" class="main-content">
+
+      <!-- ── HERO HEADER ─────────────────── -->
       <header class="content-header">
-        <h1 class="page-title">Welcome</h1>
-        <p class="page-subtitle">A personal space for notes, links, and things worth keeping.</p>
+        <div class="patch-badge">Early Access · Patch 0.5.0</div>
+        <h1 class="page-title">Return of the Ancients</h1>
+        <p class="page-subtitle">A complete rework of Path of Exile 2's endgame, featuring the new Runes of Aldur league, Atlas overhaul, and game-changing mechanics updates.</p>
+        <div class="header-dates">
+          <div class="date-chip"><strong>Release:</strong> May 21, 2026</div>
+          <div class="date-chip"><strong>Duration:</strong> 3 months</div>
+        </div>
       </header>
 
-      <!-- About section -->
-      <section class="content-block" aria-labelledby="section-about">
-        <h2 id="section-about" class="block-title">About</h2>
+      <!-- ── RUNES OF ALDUR LEAGUE ────────── -->
+      <section class="content-block" aria-labelledby="league-title">
+        <h2 id="league-title" class="block-title">🔮 Runes of Aldur — New League</h2>
         <div class="block-body">
-          <p>This is your personal site. Use the sidebar to navigate curated links, and this main area to keep notes, updates, or anything else you want to track.</p>
-          <p>Edit <code>index.html</code> to update your content. Add new sections using the patterns in the plan, and push to GitHub for automatic deployment via Vercel.</p>
+          <p>The <strong>Runes of Aldur</strong> league introduces a new endgame mechanic centered on ancient rune fragments scattered across maps. Collect and combine runes to unlock powerful rewards, boss encounters, and rare item drops.</p>
+          <p>Runes have <strong>three tiers of rarity</strong>: common (gray), uncommon (blue), and rare (gold). Combining matching sets grants cumulative bonuses and unlocks special boss encounters tied to ancient lore.</p>
         </div>
-      </section>
-
-      <!-- Projects card grid -->
-      <section class="content-block" aria-labelledby="section-projects">
-        <h2 id="section-projects" class="block-title">Projects</h2>
         <div class="card-grid">
           <article class="card">
-            <h3 class="card-title">Project One</h3>
-            <p class="card-body">A short description of what this project is and why it matters.</p>
-            <a href="#" class="card-link">View →</a>
+            <h3 class="card-title">Rune Collection <span class="card-tag">Core Mechanic</span></h3>
+            <p class="card-body">Find rune fragments in any map. Each rune has unique properties and synergies with specific ascendancies.</p>
           </article>
           <article class="card">
-            <h3 class="card-title">Project Two</h3>
-            <p class="card-body">Another project you are working on or have shipped recently.</p>
-            <a href="#" class="card-link">View →</a>
+            <h3 class="card-title">Altar Crafting</h3>
+            <p class="card-body">Use runes at special altars to craft rare items, guarantee specific mods, or reroll item properties with rune power.</p>
           </article>
           <article class="card">
-            <h3 class="card-title">Project Three</h3>
-            <p class="card-body">Add as many cards as you need — the grid adapts automatically.</p>
-            <a href="#" class="card-link">View →</a>
+            <h3 class="card-title">Ancient Bosses</h3>
+            <p class="card-body">Unlock fights against legendary ancients by completing rune sets. Defeat them for guaranteed unique drops and exotic rewards.</p>
           </article>
         </div>
       </section>
 
-      <!-- Notes section -->
-      <section class="content-block" aria-labelledby="section-notes">
-        <h2 id="section-notes" class="block-title">Notes</h2>
+      <!-- ── ENDGAME ATLAS REWORK ─────────── -->
+      <section class="content-block" aria-labelledby="atlas-title">
+        <h2 id="atlas-title" class="block-title">🗺️ Atlas & Endgame Overhaul</h2>
         <div class="block-body">
-          <p>Use this section for anything you want to keep handy — links you read, ideas, or short-form writing.</p>
+          <p>The Atlas has been completely restructured. <strong>Passive skill trees are now map-specific</strong>, allowing you to customize rewards per tier or region. The Vaal Temple endgame boss fight now scales dynamically based on your build's damage and survivability.</p>
+          <p>New <strong>"Pinnacle" encounters</strong> appear randomly in tier 14+ maps. These optional boss fights reward exclusive cosmetics, currency, and guaranteed rare uniques.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card-title">Regional Passives <span class="card-tag">New</span></h3>
+            <p class="card-body">Each Atlas region now has its own passive tree that modifies map rewards, rare spawns, and boss mechanics.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Vaal Temple Rework</h3>
+            <p class="card-body">Endgame boss now scales to your gear. Higher survivability = harder fight, better rewards.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Pinnacle Encounters</h3>
+            <p class="card-body">Random endgame bosses with unique cosmetic rewards. Purely optional but highly rewarding.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Ascendancy Nexus</h3>
+            <p class="card-body">New endgame boss themed around combining multiple ascendancies. Requires strategic planning and diverse builds.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── LEAGUE MECHANIC REWORKS ───────── -->
+      <section class="content-block" aria-labelledby="mechanics-title">
+        <h2 id="mechanics-title" class="block-title">⚙️ League Mechanic Reworks</h2>
+        <div class="block-body">
+          <p>Several legacy league mechanics have been rebalanced for patch 0.5.0:</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card-title">Delve 2.0</h3>
+            <p class="card-body">Azurite nodes now grant build-specific passive points. Deeper delves unlock hidden rare mods.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Breach Evolved</h3>
+            <p class="card-body">Breaches now spawn unique elite packs. Closing a breach grants a temporary buff stacking up to 5x.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Blight Expansion</h3>
+            <p class="card-body">New tower types for end-game Blight encounters. Combines active gameplay with tower defense.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Harvest Consolidation</h3>
+            <p class="card-body">Harvest crafts now guarantee specific mod outcomes. Less RNG, more player agency.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── NEW ASCENDANCIES ───────────────── -->
+      <section class="content-block" aria-labelledby="ascend-title">
+        <h2 id="ascend-title" class="block-title">⚡ New Ascendancies</h2>
+        <div class="block-body">
+          <p>Two new ascendancies have been added to the game. The <strong>Chrono-Weaver</strong> (Witch) focuses on time manipulation and haste mechanics. The <strong>Stone Warden</strong> (Marauder) specializes in earth and defensive synergies.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card-title">Chrono-Weaver <span class="card-tag">Witch</span></h3>
+            <p class="card-body">Master temporal abilities. Slow enemies, accelerate allies, and create time-locked zones with scaling damage.</p>
+          </article>
+          <article class="card">
+            <h3 class="card-title">Stone Warden <span class="card-tag">Marauder</span></h3>
+            <p class="card-body">Summon animated terrain and earth golems. Gain armor scaling from golem count and active minions.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── UNIQUE ITEMS & QOL ─────────────── -->
+      <section class="content-block" aria-labelledby="items-title">
+        <h2 id="items-title" class="block-title">💎 Unique Items & Quality of Life</h2>
+        <div class="block-body">
+          <p><strong>18 new unique items</strong> have been introduced, with a focus on supporting the new ascendancies and rune mechanic. Additionally, several quality-of-life improvements ship with 0.5.0:</p>
+          <ul style="margin-top: var(--space-4); list-style: disc; padding-left: var(--space-6);">
+            <li>Improved trade interface with saved searches</li>
+            <li>Vendor recipes now display required items in tooltips</li>
+            <li>New minimap filters for league content</li>
+            <li>Performance optimizations for large spell effect packs</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── KEY DATES & MIGRATION ──────────── -->
+      <section class="content-block" aria-labelledby="dates-title">
+        <h2 id="dates-title" class="block-title">📅 Timeline</h2>
+        <div class="block-body">
+          <p>Patch 0.5.0 launches on <strong>May 21, 2026</strong>. All current league content will be migrated to the core game. Existing characters remain intact.</p>
         </div>
       </section>
 

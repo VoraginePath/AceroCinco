@@ -1,4 +1,4 @@
-// ─── Theme toggle ───────────────────────────────────────────
+// Theme toggle
 (function () {
   const html = document.documentElement;
   const toggle = document.querySelector('[data-theme-toggle]');
@@ -10,9 +10,7 @@
       toggle.setAttribute('aria-label', `Switch to ${t === 'dark' ? 'light' : 'dark'} mode`);
     }
   }
-
   applyTheme(theme);
-
   if (toggle) {
     toggle.addEventListener('click', () => {
       theme = theme === 'dark' ? 'light' : 'dark';
@@ -21,7 +19,7 @@
   }
 })();
 
-// ─── Mobile sidebar toggle ───────────────────────────────────
+// Mobile sidebar
 (function () {
   const btn = document.querySelector('.sidebar-toggle');
   const sidebar = document.getElementById('sidebar');
@@ -33,7 +31,6 @@
     btn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
-
   function closeSidebar() {
     sidebar.classList.remove('is-open');
     backdrop.classList.remove('is-visible');
@@ -41,17 +38,11 @@
     document.body.style.overflow = '';
   }
 
-  btn.addEventListener('click', () => {
-    const isOpen = sidebar.classList.contains('is-open');
-    isOpen ? closeSidebar() : openSidebar();
-  });
-
+  btn.addEventListener('click', () =>
+    sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar()
+  );
   backdrop.addEventListener('click', closeSidebar);
-
-  // Close sidebar when Escape is pressed
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sidebar.classList.contains('is-open')) {
-      closeSidebar();
-    }
+    if (e.key === 'Escape' && sidebar.classList.contains('is-open')) closeSidebar();
   });
 })();
