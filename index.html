@@ -115,6 +115,11 @@
                 <span class="link-dot" aria-hidden="true"></span> poe2db
               </a>
             </li>
+            <li>
+              <a href="#bis-title" class="sidebar-link">
+                <span class="link-dot" aria-hidden="true"></span> Objeto BIS
+              </a>
+            </li>
           </ul>
         </section>
 
@@ -312,6 +317,34 @@
             <li>Nuevos filtros de minimapa para contenido de liga</li>
             <li>Optimizaciones de rendimiento para paquetes de efectos de hechizo grandes</li>
           </ul>
+        </div>
+      </section>
+
+      <section class="content-block" aria-labelledby="bis-title">
+        <h2 id="bis-title" class="block-title">🧾 Objeto BIS</h2>
+        <div class="block-body">
+          <p>Agrega URLs de objetos de <strong>poe2db.tw</strong>. El último segmento de la URL identifica el objeto que se almacenará en la tabla siguiente.</p>
+          <form id="bis-object-form" class="bis-form">
+            <label for="bis-object-url" class="bis-label">URL del objeto</label>
+            <div class="bis-input-row">
+              <input id="bis-object-url" type="url" placeholder="https://poe2db.tw/us/Death_Rush" required autocomplete="off" />
+              <button type="submit" class="bis-submit">Agregar objeto</button>
+            </div>
+          </form>
+          <p id="bis-object-message" class="bis-message" aria-live="polite"></p>
+        </div>
+        <div class="bis-table-wrapper">
+          <table class="bis-table">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Origen</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="bis-object-list"></tbody>
+          </table>
         </div>
       </section>
 
