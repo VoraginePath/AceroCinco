@@ -105,30 +105,14 @@
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
-    const imageEl = doc.querySelector('.itemboximage img');
-    const nameEl = doc.querySelector('h1, .title h1, .page-title, [itemprop="name"]');
-    let imageUrl = imageEl?.src || null;
-    let name = nameEl?.textContent?.trim() || null;
-
-    if (!imageUrl || !name) {
-      const raw = html.replace(/\s+/g, ' ');
-      const iconMatch = raw.match(/"icon"\s*:\s*"(https?:[^"\\]+)"/i);
-      const nameMatch = raw.match(/"name"\s*:\s*"([^"]+)"/i);
-      imageUrl = imageUrl || iconMatch?.[1]?.replace(/\\u002f/g, '/');
-      name = name || nameMatch?.[1];
-    }
-
-    if (!name) {
-      throw new Error('No se encontró el nombre del objeto en la página.');
-    }
-    if (!imageUrl) {
-      throw new Error('No se encontró la imagen del objeto en la página.');
+    const flexDiv = doc.querySelector('.d-flex.flex-wrap');
+    if (!flexDiv) {
+      throw new Error('No se encontró el contenedor del objeto en la página.');
     }
 
     return {
-      id: `${name}-${Date.now()}`,
-      name,
-      imageUrl,
+      id: `object-${Date.now()}`,
+      html: flexDiv.outerHTML,
       url: originalUrl,
     };
   }
@@ -137,9 +121,7 @@
     if (!tableBody) return;
     tableBody.innerHTML = objects.map((obj) => `
       <tr>
-        <td><img src="${obj.imageUrl}" alt="${obj.name}" loading="lazy"></td>
-        <td>${obj.name}</td>
-        <td><a href="${obj.url}" target="_blank" rel="noopener noreferrer">Ver página</a></td>
+        <td>${obj.html}</td>
         <td><button type="button" data-id="${obj.id}" class="bis-remove-button">Eliminar</button></td>
       </tr>
     `).join('');
