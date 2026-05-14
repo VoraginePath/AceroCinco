@@ -52,7 +52,30 @@
   const input = document.getElementById('bis-object-url');
   const message = document.getElementById('bis-object-message');
   const tableBody = document.getElementById('bis-object-list');
-  const objects = [];
+
+  function getStorageKey() {
+    return 'acero_cinco_bis_objects';
+  }
+
+  function loadStoredObjects() {
+    try {
+      const raw = localStorage.getItem(getStorageKey());
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveStoredObjects() {
+    try {
+      localStorage.setItem(getStorageKey(), JSON.stringify(objects));
+    } catch (error) {
+      /* ignore storage errors */
+    }
+  }
+
+  const objects = loadStoredObjects();
 
   function showMessage(text, isError = false) {
     if (!message) return;
@@ -128,11 +151,14 @@
         if (index !== -1) {
           objects.splice(index, 1);
           renderObjects();
+          saveStoredObjects();
           showMessage('Objeto eliminado.', false);
         }
       });
     });
   }
+
+  renderObjects();
 
   if (form) {
     form.addEventListener('submit', async (event) => {
@@ -151,6 +177,7 @@
         const objectData = parseObjectData(html, rawValue);
         objects.push(objectData);
         renderObjects();
+        saveStoredObjects();
         input.value = '';
         showMessage('Objeto agregado correctamente.', false);
       } catch (error) {
