@@ -2,10 +2,10 @@
 (function () {
   const html = document.documentElement;
   const toggle = document.querySelector('[data-theme-toggle]');
-  let theme = html.getAttribute('data-theme') || 'dark';
+  let theme = html.getAttribute('data-bs-theme') || 'dark';
 
   function applyTheme(t) {
-    html.setAttribute('data-theme', t);
+    html.setAttribute('data-bs-theme', t);
     if (toggle) {
       toggle.setAttribute('aria-label', `Switch to ${t === 'dark' ? 'light' : 'dark'} mode`);
     }
