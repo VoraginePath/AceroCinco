@@ -1,105 +1,422 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PoE2 Hub — El Regreso de los Antiguos</title>
-  <meta name="description" content="Centro personal de Path of Exile 2. Notas del parche 0.5.0, herramientas útiles, enlaces de comercio y recursos." />
-  <meta property="og:title" content="PoE2 Hub — El Regreso de los Antiguos" />
-  <meta property="og:description" content="Sitio de referencia personal de Path of Exile 2 para el parche 0.5.0." />
-  <meta property="og:image" content="/assets/og-image.png" />
-  <link rel="icon" href="/assets/favicon.ico" />
+  <title>PoE2 Item Card</title>
+  <style>
+    :root {
+      --bg-page: #111111;
+      --bg-panel-top: rgba(38, 31, 22, 0.98);
+      --bg-panel-bottom: rgba(12, 10, 8, 0.98);
+      --border-main: #5f4a2a;
+      --border-soft: rgba(255, 214, 140, 0.08);
+      --separator: rgba(201, 168, 95, 0.65);
 
-  <!-- Cabinet Grotesk via Fontshare -->
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+      --text-base: #cfcfcf;
+      --text-white: #ffffff;
+      --text-muted: #a69b8a;
+      --text-flavour: #b7a58b;
 
-  <!-- Inter via Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+      --unique-name: #af6025;
+      --magic-link: #7dc3ff;
+      --magic-link-hover: #b8deff;
+      --mod-value: #88ffff;
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      --shadow-main: 0 12px 28px rgba(0, 0, 0, 0.55);
+      --font-body: Verdana, "Trebuchet MS", Arial, sans-serif;
+    }
 
-  <link rel="stylesheet" href="style.css" />
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(90, 70, 35, 0.15), transparent 35%),
+        var(--bg-page);
+      color: var(--text-base);
+      font-family: var(--font-body);
+      padding: 24px;
+    }
+
+    .poe2-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .poe2-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .item-popup--poe2 {
+      width: 420px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, var(--bg-panel-top) 0%, var(--bg-panel-bottom) 100%);
+      border: 1px solid var(--border-main);
+      box-shadow: var(--shadow-main);
+    }
+
+    .item-popup--poe2::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--border-soft);
+      pointer-events: none;
+    }
+
+    .itemHeader.doubleLine {
+      padding: 10px 14px 8px;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 168, 95, 0.28);
+      background: linear-gradient(180deg, rgba(90, 70, 35, 0.22), rgba(20, 16, 12, 0.05));
+    }
+
+    .itemName {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    .itemName .lc {
+      display: inline-block;
+    }
+
+    .itemName--unique {
+      color: var(--unique-name);
+      font-size: 26px;
+      line-height: 1.06;
+    }
+
+    .itemName.typeLine {
+      margin-top: 4px;
+      color: var(--text-white);
+      font-size: 18px;
+      line-height: 1.12;
+    }
+
+    .content {
+      padding: 12px 14px 14px;
+    }
+
+    .Stats {
+      width: 100%;
+    }
+
+    .property,
+    .requirements,
+    .implicitMod,
+    .explicitMod,
+    .enchantMod,
+    .flavourText,
+    .baseName {
+      text-align: center;
+      margin: 4px 0;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .property,
+    .requirements,
+    .implicitMod,
+    .baseName {
+      color: var(--text-base);
+    }
+
+    .separator {
+      height: 1px;
+      width: 100%;
+      margin: 10px auto;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        var(--separator) 18%,
+        var(--separator) 82%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    .item-popup--poe2 a {
+      color: var(--magic-link);
+      text-decoration: none;
+    }
+
+    .item-popup--poe2 a:hover {
+      color: var(--magic-link-hover);
+      text-decoration: underline;
+    }
+
+    .colourDefault {
+      color: var(--text-white);
+    }
+
+    .colourAugmented,
+    .mod-value {
+      color: var(--mod-value);
+    }
+
+    .explicitMod {
+      color: var(--mod-value);
+    }
+
+    .enchantMod {
+      color: #bda7ff;
+    }
+
+    .flavourText {
+      color: var(--text-flavour);
+      font-style: italic;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .baseName {
+      margin-top: 10px;
+      color: #8f8f8f;
+      font-size: 12px;
+    }
+
+    .grantsSkill {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      border-radius: 3px;
+    }
+
+    .itemboximage {
+      width: 140px;
+      min-height: 230px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 12px;
+    }
+
+    .itemboximage img {
+      width: 120px;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px;
+      }
+
+      .poe2-item {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .item-popup--poe2 {
+        width: min(420px, 100%);
+      }
+
+      .itemboximage {
+        width: 100%;
+        min-height: auto;
+        padding-top: 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="poe2-items" id="poe2-items"></div>
 
-  <a href="#main-content" class="skip-link">Skip to content</a>
+  <script>
+    const items = [
+      {
+        rarity: "Unique",
+        name: "Lengua enredada",
+        englishName: "Tangletongue",
+        typeLine: "Lanza bifurcada",
+        image: "https://cdn.poe2db.tw/image/Art/2DItems/Weapons/OneHandWeapons/OneHandSpears/Uniques/Tangletongue.webp",
+        properties: [
+          'Lanza',
+          'Daño físico: <span class="colourAugmented">(27-31) to (68-74)</span>',
+          'Probabilidad de impacto crítico: <span class="colourDefault">5%</span>',
+          'Ataques por segundo: <span class="colourDefault">1.55</span>',
+          'Alcance de arma: <span class="colourDefault">1.5</span>'
+        ],
+        requirements: [
+          'Nivel 26',
+          '17 Fue',
+          '38 Des'
+        ],
+        grantedSkill: {
+          icon: 'https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/HuntressIceSpear.webp',
+          text: 'Otorga la habilidad: <a class="gemitem" href="/sp/Spear_Throw">Lanzamiento de lanza</a>'
+        },
+        enchantMods: [],
+        explicitMods: [
+          'Agrega de <span class="mod-value">(14—18)</span> a <span class="mod-value">(30—36)</span> de daño físico',
+          '<span class="mod-value">+(5—8)</span>% a la probabilidad de impacto crítico',
+          '<span class="mod-value">+(15—25)</span> a la inteligencia',
+          'Bifurca los impactos críticos',
+          'El <span class="mod-value">10</span>% de los costos de maná de las habilidades se convierte en costos de vida'
+        ],
+        flavourText: [
+          '"En manos de Orbala, hizo sangrar a un dios."',
+          '- Wranga, cuentacuentos del akhara Wahida'
+        ]
+      },
+      {
+        rarity: "Unique",
+        name: "Astilla de cielo",
+        englishName: "Skysliver",
+        typeLine: "Lanza alada",
+        image: "https://cdn.poe2db.tw/image/Art/2DItems/Weapons/OneHandWeapons/OneHandSpears/Uniques/Skysliver.webp",
+        properties: [
+          'Lanza',
+          'Daño físico: <span class="colourDefault">12-22</span>',
+          'Probabilidad de impacto crítico: <span class="colourDefault">5%</span>',
+          'Ataques por segundo: <span class="colourAugmented">(1.9-2.15)</span>',
+          'Alcance de arma: <span class="colourDefault">1.5</span>'
+        ],
+        requirements: [
+          'Nivel 16',
+          '14 Fue',
+          '30 Des'
+        ],
+        grantedSkill: {
+          icon: 'https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/HuntressIceSpear.webp',
+          text: 'Otorga la habilidad: <a class="gemitem" href="/sp/Spear_Throw">Lanzamiento de lanza</a>'
+        },
+        enchantMods: [],
+        explicitMods: [
+          'Agrega de <span class="mod-value">1</span> a <span class="mod-value">(80–120)</span> de daño de rayo',
+          'Velocidad de ataque aumentada un <span class="mod-value">(15–30)%</span>',
+          '<span class="mod-value">+(10–20)</span> a la destreza',
+          'Probabilidad de electrocutar aumentada un <span class="mod-value">(50–100)%</span>'
+        ],
+        flavourText: [
+          'Las cabezas caen a la arena, igual que la estrella cayó del cielo'
+        ]
+      }
+    ];
 
-  <!-- Mobile sidebar toggle -->
-  <button class="sidebar-toggle" aria-label="Open sidebar" aria-expanded="false" aria-controls="sidebar">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <line x1="3" y1="6" x2="21" y2="6"/>
-      <line x1="3" y1="12" x2="21" y2="12"/>
-      <line x1="3" y1="18" x2="21" y2="18"/>
-    </svg>
-  </button>
+    function createSeparator() {
+      const sep = document.createElement("div");
+      sep.className = "separator";
+      return sep;
+    }
 
-  <div class="site-wrapper">
+    function createLine(className, html) {
+      const div = document.createElement("div");
+      div.className = className;
+      div.innerHTML = html;
+      return div;
+    }
 
-    <!-- ═══════════════════════════════
-         LEFT SIDEBAR — PoE2 Tools & Links
-         ═══════════════════════════════ -->
-    <aside id="sidebar" class="sidebar" aria-label="PoE2 tools and resources">
+    function renderItem(item) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "poe2-item";
 
-      <div class="sidebar-header">
-        <a href="/" class="site-logo" aria-label="PoE2 Hub home">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <rect width="28" height="28" rx="4" fill="var(--color-primary)"/>
-            <text x="14" y="19" text-anchor="middle" font-size="14"
-                  font-family="var(--font-display)" font-weight="800" fill="white">P2</text>
-          </svg>
-          <span class="site-name">PoE2 Hub</span>
-        </a>
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
-          <!-- Moon icon (dark mode active) -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-      </div>
+      const popup = document.createElement("div");
+      popup.className = "newItemPopup uniquePopup item-popup--poe2";
+      popup.setAttribute("data-power-by", "poedb");
 
-      <nav class="sidebar-nav" aria-label="PoE2 resources navigation">
-        <!-- Barra lateral vacía, sin enlaces por ahora -->
-      </nav>
-    </aside>
-
-    <div class="sidebar-backdrop" aria-hidden="true"></div>
-
-    <!-- ═══════════════════════════════
-         MAIN CONTENT — Objeto BIS
-         ═══════════════════════════════ -->
-    <main id="main-content" class="main-content">
-      <section class="content-block" aria-labelledby="bis-title">
-        <h2 id="bis-title" class="block-title">🧾 Objeto BIS</h2>
-        <div class="block-body">
-          <p>Agrega URLs de objetos de <strong>poe2db.tw</strong>. El último segmento de la URL identifica el objeto que se almacenará en la tabla siguiente.</p>
-          <form id="bis-object-form" class="bis-form">
-            <label for="bis-object-url" class="bis-label">URL del objeto</label>
-            <div class="bis-input-row">
-              <input id="bis-object-url" type="url" placeholder="https://poe2db.tw/us/Death_Rush" required autocomplete="off" />
-              <button type="submit" class="bis-submit">Agregar objeto</button>
-            </div>
-          </form>
-          <p id="bis-object-message" class="bis-message" aria-live="polite"></p>
+      popup.innerHTML = `
+        <div class="itemHeader doubleLine">
+          <div class="itemName itemName--unique">
+            <span class="lc">${item.name}</span>
+          </div>
+          <div class="itemName typeLine">
+            <span class="lc">${item.typeLine}</span>
+          </div>
         </div>
-        <div class="bis-table-wrapper">
-          <table class="bis-table">
-            <thead>
-              <tr>
-                <th>Objeto</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="bis-object-list"></tbody>
-          </table>
-        </div>
-      </section>
-    </main>
-  </div>
+      `;
 
-  <script src="main.js" defer></script>
+      const content = document.createElement("div");
+      content.className = "content";
+
+      const stats = document.createElement("div");
+      stats.className = "Stats";
+
+      item.properties.forEach(line => {
+        stats.appendChild(createLine("property", line));
+      });
+
+      if (item.requirements?.length) {
+        stats.appendChild(createSeparator());
+        stats.appendChild(
+          createLine(
+            "requirements",
+            `Requiere: ${item.requirements.map(v => `<span class="colourDefault">${v}</span>`).join(", ")}`
+          )
+        );
+      }
+
+      if (item.grantedSkill) {
+        stats.appendChild(createSeparator());
+        stats.appendChild(
+          createLine(
+            "implicitMod",
+            `<img loading="lazy" src="${item.grantedSkill.icon}" class="grantsSkill" alt="Skill icon">${item.grantedSkill.text}`
+          )
+        );
+      }
+
+      if (item.enchantMods?.length) {
+        stats.appendChild(createSeparator());
+        item.enchantMods.forEach(line => {
+          stats.appendChild(createLine("enchantMod", line));
+        });
+      }
+
+      if (item.explicitMods?.length) {
+        stats.appendChild(createSeparator());
+        item.explicitMods.forEach(line => {
+          stats.appendChild(createLine("explicitMod", line));
+        });
+      }
+
+      if (item.flavourText?.length) {
+        stats.appendChild(createSeparator());
+        stats.appendChild(
+          createLine("flavourText", item.flavourText.join("<br>"))
+        );
+      }
+
+      stats.appendChild(createLine("baseName", item.englishName));
+
+      content.appendChild(stats);
+      popup.appendChild(content);
+
+      const imageBox = document.createElement("div");
+      imageBox.className = "itemboximage";
+      imageBox.innerHTML = `
+        <img
+          loading="lazy"
+          src="${item.image}"
+          alt="${item.englishName}"
+        >
+      `;
+
+      wrapper.appendChild(popup);
+      wrapper.appendChild(imageBox);
+
+      return wrapper;
+    }
+
+    const mount = document.getElementById("poe2-items");
+    items.forEach(item => mount.appendChild(renderItem(item)));
+  </script>
 </body>
 </html>
