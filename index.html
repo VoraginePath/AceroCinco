@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conquest of Azeroth - Class Stat & Armor Overlay</title>
+    <title>Conquest of Azeroth - Stat + Armor Combinations</title>
     <style>
         * {
             margin: 0;
@@ -39,25 +39,13 @@
             font-size: 0.95em;
         }
 
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 1200px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .section {
             background: rgba(30, 40, 60, 0.8);
             border: 2px solid #00d4ff;
             border-radius: 10px;
             padding: 20px;
             backdrop-filter: blur(10px);
+            margin-bottom: 30px;
         }
 
         .section h2 {
@@ -68,168 +56,115 @@
             letter-spacing: 2px;
         }
 
-        .stat-group, .armor-group {
-            margin-bottom: 15px;
-        }
-
-        .stat-label, .armor-label {
-            font-weight: 600;
-            color: #ffd700;
-            margin-bottom: 8px;
-            font-size: 0.9em;
-        }
-
-        .stat-items, .armor-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .stat-btn, .armor-btn {
-            padding: 8px 15px;
-            border: 2px solid #444;
-            border-radius: 5px;
-            background: rgba(70, 70, 90, 0.6);
-            color: #e0e0e0;
-            cursor: pointer;
-            font-size: 0.85em;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .stat-btn:hover, .armor-btn:hover {
-            background: rgba(100, 100, 120, 0.8);
-            border-color: #00d4ff;
-            transform: translateY(-2px);
-        }
-
-        .stat-btn.active, .armor-btn.active {
-            background: #00d4ff;
-            border-color: #00ff88;
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-        }
-
-        .stat-color {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 5px;
-            vertical-align: middle;
-        }
-
-        .classes-grid {
+        .combinations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
-        .class-card {
-            background: rgba(30, 40, 60, 0.6);
+        .combination-card {
+            background: rgba(70, 70, 90, 0.6);
             border: 2px solid #444;
             border-radius: 8px;
             padding: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .class-card:hover {
-            background: rgba(40, 50, 80, 0.8);
+        .combination-card:hover {
+            background: rgba(100, 100, 120, 0.8);
             border-color: #00d4ff;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
-        .class-card.selected {
-            background: rgba(0, 212, 255, 0.15);
+        .combination-card.selected {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(0, 255, 136, 0.3));
             border-color: #00ff88;
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1);
         }
 
-        .class-name {
-            font-size: 1.1em;
+        .combination-card.selected::before {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .armor-type {
             font-weight: bold;
             color: #ffd700;
-            margin-bottom: 10px;
+            font-size: 0.95em;
+            margin-bottom: 8px;
         }
 
-        .class-stat {
-            font-size: 0.8em;
-            margin: 5px 0;
-            color: #b0b0b0;
-        }
-
-        .stat-value {
+        .stat-type {
+            font-size: 0.85em;
             color: #00d4ff;
             font-weight: 600;
+            margin-bottom: 8px;
+            padding: 4px 8px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 3px;
         }
 
-        .armor-value {
-            color: #00ff88;
-            font-weight: 600;
+        .class-count {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+            padding-top: 8px;
+            border-top: 1px solid #555;
         }
 
-        .role-value {
-            color: #ff9800;
-            font-weight: 600;
-        }
-
-        .overlap-info {
+        .classes-list {
             background: rgba(30, 40, 60, 0.8);
             border: 2px solid #ffd700;
             border-radius: 10px;
             padding: 20px;
-            margin-top: 30px;
-            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
         }
 
-        .overlap-info h3 {
+        .classes-list h3 {
             color: #ffd700;
             margin-bottom: 15px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .overlap-content {
+        .classes-list-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
         }
 
-        .overlap-box {
+        .class-item {
             background: rgba(70, 70, 90, 0.6);
             border-left: 4px solid #00d4ff;
-            padding: 15px;
+            padding: 12px;
             border-radius: 5px;
+            font-size: 0.9em;
         }
 
-        .overlap-box h4 {
-            color: #00d4ff;
-            margin-bottom: 8px;
-            font-size: 0.95em;
-        }
-
-        .overlap-list {
-            list-style: none;
-        }
-
-        .overlap-list li {
-            color: #e0e0e0;
-            font-size: 0.85em;
-            margin: 5px 0;
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .overlap-list li:before {
-            content: "▶";
-            position: absolute;
-            left: 0;
+        .class-item-name {
+            font-weight: bold;
             color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .class-item-detail {
+            color: #b0b0b0;
+            font-size: 0.8em;
         }
 
         .no-selection {
@@ -247,8 +182,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
-            margin-top: 20px;
             transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
         .reset-btn:hover {
@@ -278,117 +213,116 @@
             height: 15px;
             border-radius: 3px;
         }
+
+        .summary-box {
+            background: rgba(30, 40, 60, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-box h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .stat-box {
+            background: rgba(70, 70, 90, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #00d4ff;
+            text-align: center;
+        }
+
+        .stat-box-label {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-bottom: 3px;
+        }
+
+        .stat-box-value {
+            color: #00d4ff;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>⚔️ Conquest of Azeroth ⚔️</h1>
-        <p class="subtitle">Class Stat & Armor Type Overlay Tool - Select classes to find overlapping stats and armor types</p>
+        <p class="subtitle">Stat + Armor Combination Picker - Click combinations to see which classes share the same gear stats</p>
 
-        <div class="content">
-            <div class="section">
-                <h2>📊 Primary Stats</h2>
-                <div class="stat-group">
-                    <div class="stat-label">
-                        <span class="stat-color" style="background: #ff6b6b;"></span>Strength
-                    </div>
-                    <div class="stat-items" id="strength-items"></div>
-                </div>
-                <div class="stat-group">
-                    <div class="stat-label">
-                        <span class="stat-color" style="background: #4ecdc4;"></span>Agility
-                    </div>
-                    <div class="stat-items" id="agility-items"></div>
-                </div>
-                <div class="stat-group">
-                    <div class="stat-label">
-                        <span class="stat-color" style="background: #45b7d1;"></span>Intellect
-                    </div>
-                    <div class="stat-items" id="intellect-items"></div>
-                </div>
-                <div class="stat-group">
-                    <div class="stat-label">
-                        <span class="stat-color" style="background: #96ceb4;"></span>Spirit
-                    </div>
-                    <div class="stat-items" id="spirit-items"></div>
-                </div>
+        <div class="section">
+            <h2>🎯 Select Stat + Armor Combinations</h2>
+            <p style="color: #b0b0b0; margin-bottom: 20px; font-size: 0.9em;">Click on combinations to select them. Green checkmarks (✓) show your selections.</p>
+            
+            <button class="reset-btn" onclick="resetSelection()">↺ Reset All</button>
+            
+            <div class="combinations-grid" id="combinationsGrid"></div>
 
-                <div class="stats-color-legend">
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #ff6b6b;"></div>
-                        <span>Strength</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #4ecdc4;"></div>
-                        <span>Agility</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #45b7d1;"></div>
-                        <span>Intellect</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #96ceb4;"></div>
-                        <span>Spirit</span>
-                    </div>
+            <div class="stats-color-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff6b6b;"></div>
+                    <span>Strength</span>
                 </div>
-            </div>
-
-            <div class="section">
-                <h2>🛡️ Armor Types</h2>
-                <div class="armor-group">
-                    <div class="armor-label">Cloth</div>
-                    <div class="armor-items" id="cloth-items"></div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4ecdc4;"></div>
+                    <span>Agility</span>
                 </div>
-                <div class="armor-group">
-                    <div class="armor-label">Leather</div>
-                    <div class="armor-items" id="leather-items"></div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #45b7d1;"></div>
+                    <span>Intellect</span>
                 </div>
-                <div class="armor-group">
-                    <div class="armor-label">Mail</div>
-                    <div class="armor-items" id="mail-items"></div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #96ceb4;"></div>
+                    <span>Spirit</span>
                 </div>
-                <div class="armor-group">
-                    <div class="armor-label">Plate</div>
-                    <div class="armor-items" id="plate-items"></div>
-                </div>
-
-                <button class="reset-btn" onclick="resetSelection()">Reset All Selections</button>
             </div>
         </div>
 
-        <div class="classes-grid" id="classesGrid"></div>
+        <div class="summary-box" id="summaryBox" style="display: none;">
+            <h3>📊 Selected Combinations</h3>
+            <div class="summary-stats" id="summaryStats"></div>
+        </div>
 
-        <div class="overlap-info">
-            <h3>🔍 Overlap Analysis</h3>
-            <div class="overlap-content" id="overlapContent">
-                <div class="no-selection">Select classes above to see stat and armor type overlaps</div>
-            </div>
+        <div class="classes-list" id="classesSection" style="display: none;">
+            <h3>📋 Classes Using Selected Combinations</h3>
+            <div class="classes-list-content" id="classesListContent"></div>
         </div>
     </div>
 
     <script>
         const classesData = [
-            { name: 'NECROMANCER', stats: ['Intellect'], armor: ['Cloth'], roles: ['DPS'] },
-            { name: 'PYROMANCER', stats: ['Intellect'], armor: ['Cloth'], roles: ['DPS', 'Healer'] },
-            { name: 'CULTIST', stats: ['Strength', 'Intellect'], armor: ['Cloth', 'Plate'], roles: ['Tank', 'DPS', 'Healer'] },
-            { name: 'STARCALLER', stats: ['Intellect'], armor: ['Mail', 'Plate'], roles: ['Tank', 'DPS', 'Healer'] },
-            { name: 'SUN CLERIC', stats: ['Strength', 'Intellect'], armor: ['Cloth', 'Plate'], roles: ['Tank', 'DPS', 'Healer'] },
-            { name: 'TINKER', stats: ['Agility', 'Intellect'], armor: ['Leather', 'Mail'], roles: ['DPS', 'Healer'] },
-            { name: 'RUNEMASTER', stats: ['Intellect', 'Spirit'], armor: ['Cloth'], roles: ['DPS'] },
-            { name: 'PRIMALIST', stats: ['Strength', 'Intellect'], armor: ['Plate'], roles: ['Tank', 'Healer', 'DPS'] },
-            { name: 'REAPER', stats: ['Strength', 'Intellect'], armor: ['Plate'], roles: ['Tank', 'DPS'] },
-            { name: 'VENOMANCER', stats: ['Intellect'], armor: ['Leather', 'Mail'], roles: ['Tank', 'Healer', 'DPS'] },
-            { name: 'CHRONOMANCER', stats: ['Intellect', 'Spirit'], armor: ['Cloth'], roles: ['DPS', 'Healer'] },
-            { name: 'SON OF ARUGAL', stats: ['Agility', 'Intellect'], armor: ['Leather'], roles: ['Tank', 'Healer', 'DPS'] },
-            { name: 'GUARDIAN', stats: ['Strength'], armor: ['Plate'], roles: ['Tank', 'DPS', 'Support'] },
-            { name: 'STORMBRINGER', stats: ['Intellect'], armor: ['Cloth'], roles: ['DPS', 'Support'] },
-            { name: 'FELSWORN', stats: ['Agility', 'Intellect'], armor: ['Leather'], roles: ['Tank', 'DPS'] },
-            { name: 'BARBARIAN', stats: ['Agility'], armor: ['Leather'], roles: ['DPS', 'Support'] },
-            { name: 'WITCH DOCTOR', stats: ['Agility', 'Intellect'], armor: ['Leather'], roles: ['DPS', 'Healer'] },
-            { name: 'WITCH HUNTER', stats: ['Agility'], armor: ['Mail'], roles: ['Tank', 'DPS'] },
-            { name: 'KNIGHT OF XOROTH', stats: ['Strength', 'Intellect'], armor: ['Plate'], roles: ['Tank', 'DPS'] },
-            { name: 'TEMPLAR', stats: ['Agility'], armor: ['Mail'], roles: ['Tank', 'DPS'] },
-            { name: 'RANGER', stats: ['Agility'], armor: ['Leather'], roles: ['DPS', 'Support'] }
+            { name: 'NECROMANCER', stats: ['Intellect'], armor: ['Cloth'] },
+            { name: 'PYROMANCER', stats: ['Intellect'], armor: ['Cloth'] },
+            { name: 'CULTIST', stats: ['Strength', 'Intellect'], armor: ['Cloth', 'Plate'] },
+            { name: 'STARCALLER', stats: ['Intellect'], armor: ['Mail', 'Plate'] },
+            { name: 'SUN CLERIC', stats: ['Strength', 'Intellect'], armor: ['Cloth', 'Plate'] },
+            { name: 'TINKER', stats: ['Agility', 'Intellect'], armor: ['Leather', 'Mail'] },
+            { name: 'RUNEMASTER', stats: ['Intellect', 'Spirit'], armor: ['Cloth'] },
+            { name: 'PRIMALIST', stats: ['Strength', 'Intellect'], armor: ['Plate'] },
+            { name: 'REAPER', stats: ['Strength', 'Intellect'], armor: ['Plate'] },
+            { name: 'VENOMANCER', stats: ['Intellect'], armor: ['Leather', 'Mail'] },
+            { name: 'CHRONOMANCER', stats: ['Intellect', 'Spirit'], armor: ['Cloth'] },
+            { name: 'SON OF ARUGAL', stats: ['Agility', 'Intellect'], armor: ['Leather'] },
+            { name: 'GUARDIAN', stats: ['Strength'], armor: ['Plate'] },
+            { name: 'STORMBRINGER', stats: ['Intellect'], armor: ['Cloth'] },
+            { name: 'FELSWORN', stats: ['Agility', 'Intellect'], armor: ['Leather'] },
+            { name: 'BARBARIAN', stats: ['Agility'], armor: ['Leather'] },
+            { name: 'WITCH DOCTOR', stats: ['Agility', 'Intellect'], armor: ['Leather'] },
+            { name: 'WITCH HUNTER', stats: ['Agility'], armor: ['Mail'] },
+            { name: 'KNIGHT OF XOROTH', stats: ['Strength', 'Intellect'], armor: ['Plate'] },
+            { name: 'TEMPLAR', stats: ['Agility'], armor: ['Mail'] },
+            { name: 'RANGER', stats: ['Agility'], armor: ['Leather'] }
         ];
 
         const statColors = {
@@ -398,243 +332,162 @@
             'Spirit': '#96ceb4'
         };
 
-        let selectedClasses = new Set();
-        let selectedStats = new Set();
-        let selectedArmor = new Set();
+        let selectedCombinations = new Set();
+        let allCombinations = [];
 
-        function initializeUI() {
-            renderClasses();
-            renderStatButtons();
-            renderArmorButtons();
+        function generateCombinations() {
+            allCombinations = [];
+            const combinationMap = new Map();
+
+            // Generate all combinations and track which classes have them
+            classesData.forEach(classData => {
+                classData.stats.forEach(stat => {
+                    classData.armor.forEach(armor => {
+                        const key = `${armor}|${stat}`;
+                        if (!combinationMap.has(key)) {
+                            combinationMap.set(key, []);
+                        }
+                        combinationMap.get(key).push(classData.name);
+                    });
+                });
+            });
+
+            // Convert to array
+            combinationMap.forEach((classes, key) => {
+                const [armor, stat] = key.split('|');
+                allCombinations.push({
+                    key,
+                    armor,
+                    stat,
+                    classes,
+                    color: statColors[stat]
+                });
+            });
+
+            // Sort by armor then stat
+            allCombinations.sort((a, b) => {
+                if (a.armor !== b.armor) return a.armor.localeCompare(b.armor);
+                return a.stat.localeCompare(b.stat);
+            });
         }
 
-        function renderClasses() {
-            const grid = document.getElementById('classesGrid');
+        function initializeUI() {
+            generateCombinations();
+            renderCombinations();
+        }
+
+        function renderCombinations() {
+            const grid = document.getElementById('combinationsGrid');
             grid.innerHTML = '';
 
-            classesData.forEach((classData, index) => {
+            allCombinations.forEach(combo => {
                 const card = document.createElement('div');
-                card.className = 'class-card';
-                if (selectedClasses.has(classData.name)) {
+                card.className = 'combination-card';
+                if (selectedCombinations.has(combo.key)) {
                     card.classList.add('selected');
                 }
 
-                const statsHTML = classData.stats.map(stat => 
-                    `<div class="class-stat"><span class="stat-color" style="background: ${statColors[stat]}; width: 10px; height: 10px; display: inline-block; border-radius: 2px; margin-right: 5px;"></span><span class="stat-value">${stat}</span></div>`
-                ).join('');
-
-                const armorHTML = classData.armor.map(armor => 
-                    `<div class="class-stat"><span class="armor-value">${armor}</span></div>`
-                ).join('');
-
                 card.innerHTML = `
-                    <div class="class-name">${classData.name}</div>
-                    <div style="margin-bottom: 8px; font-size: 0.75em; color: #999; border-bottom: 1px solid #555; padding-bottom: 8px;">
-                        <strong>Stats:</strong>
-                    </div>
-                    ${statsHTML}
-                    <div style="margin-top: 8px; font-size: 0.75em; color: #999; border-bottom: 1px solid #555; padding-bottom: 8px;">
-                        <strong>Armor:</strong>
-                    </div>
-                    ${armorHTML}
+                    <div class="armor-type">${combo.armor}</div>
+                    <div class="stat-type" style="background-color: ${combo.color}40;">${combo.stat}</div>
+                    <div class="class-count">${combo.classes.length} class${combo.classes.length !== 1 ? 'es' : ''}</div>
                 `;
 
-                card.onclick = () => toggleClass(classData.name);
+                card.onclick = () => toggleCombination(combo.key);
                 grid.appendChild(card);
             });
         }
 
-        function renderStatButtons() {
-            const stats = ['Strength', 'Agility', 'Intellect', 'Spirit'];
-            stats.forEach(stat => {
-                const container = document.getElementById(stat.toLowerCase() + '-items');
-                container.innerHTML = '';
-
-                const uniqueClasses = new Set(
-                    classesData.filter(c => c.stats.includes(stat)).map(c => c.name)
-                );
-
-                uniqueClasses.forEach(className => {
-                    const btn = document.createElement('button');
-                    btn.className = 'stat-btn';
-                    if (selectedStats.has(className)) {
-                        btn.classList.add('active');
-                    }
-                    btn.textContent = className;
-                    btn.onclick = () => toggleStat(className);
-                    container.appendChild(btn);
-                });
-            });
-        }
-
-        function renderArmorButtons() {
-            const armors = ['Cloth', 'Leather', 'Mail', 'Plate'];
-            armors.forEach(armor => {
-                const container = document.getElementById(armor.toLowerCase() + '-items');
-                container.innerHTML = '';
-
-                const uniqueClasses = new Set(
-                    classesData.filter(c => c.armor.includes(armor)).map(c => c.name)
-                );
-
-                uniqueClasses.forEach(className => {
-                    const btn = document.createElement('button');
-                    btn.className = 'armor-btn';
-                    if (selectedArmor.has(className)) {
-                        btn.classList.add('active');
-                    }
-                    btn.textContent = className;
-                    btn.onclick = () => toggleArmor(className);
-                    container.appendChild(btn);
-                });
-            });
-        }
-
-        function toggleClass(className) {
-            if (selectedClasses.has(className)) {
-                selectedClasses.delete(className);
+        function toggleCombination(key) {
+            if (selectedCombinations.has(key)) {
+                selectedCombinations.delete(key);
             } else {
-                selectedClasses.add(className);
-            }
-            updateUI();
-        }
-
-        function toggleStat(className) {
-            if (selectedStats.has(className)) {
-                selectedStats.delete(className);
-            } else {
-                selectedStats.add(className);
-            }
-            updateUI();
-        }
-
-        function toggleArmor(className) {
-            if (selectedArmor.has(className)) {
-                selectedArmor.delete(className);
-            } else {
-                selectedArmor.add(className);
+                selectedCombinations.add(key);
             }
             updateUI();
         }
 
         function updateUI() {
-            renderClasses();
-            renderStatButtons();
-            renderArmorButtons();
-            updateOverlapInfo();
+            renderCombinations();
+            updateSummary();
+            updateClassesList();
         }
 
-        function updateOverlapInfo() {
-            const container = document.getElementById('overlapContent');
-            const selected = Array.from(selectedClasses);
+        function updateSummary() {
+            const summaryBox = document.getElementById('summaryBox');
+            const summaryStats = document.getElementById('summaryStats');
 
-            if (selected.length === 0) {
-                container.innerHTML = '<div class="no-selection">Select classes above to see stat and armor type overlaps</div>';
+            if (selectedCombinations.size === 0) {
+                summaryBox.style.display = 'none';
                 return;
             }
 
-            const selectedClassData = classesData.filter(c => selected.includes(c.name));
+            summaryBox.style.display = 'block';
+            summaryStats.innerHTML = '';
 
-            // Find common stats
-            const allStats = new Set();
-            selectedClassData.forEach(c => c.stats.forEach(s => allStats.add(s)));
-            
-            const commonStats = Array.from(allStats).filter(stat => 
-                selectedClassData.every(c => c.stats.includes(stat))
-            );
+            const selected = Array.from(selectedCombinations).map(key => {
+                const combo = allCombinations.find(c => c.key === key);
+                return combo;
+            });
 
-            // Find common armor
-            const allArmor = new Set();
-            selectedClassData.forEach(c => c.armor.forEach(a => allArmor.add(a)));
-            
-            const commonArmor = Array.from(allArmor).filter(armor => 
-                selectedClassData.every(c => c.armor.includes(armor))
-            );
-
-            // Find common roles
-            const allRoles = new Set();
-            selectedClassData.forEach(c => c.roles.forEach(r => allRoles.add(r)));
-            
-            const commonRoles = Array.from(allRoles).filter(role => 
-                selectedClassData.every(c => c.roles.includes(role))
-            );
-
-            let html = '';
-
-            if (commonStats.length > 0) {
-                html += `
-                    <div class="overlap-box">
-                        <h4>✓ Common Primary Stats</h4>
-                        <ul class="overlap-list">
-                            ${commonStats.map(stat => `<li><span class="stat-color" style="background: ${statColors[stat]}; width: 10px; height: 10px; display: inline-block; border-radius: 2px; margin-right: 5px;"></span>${stat}</li>`).join('')}
-                        </ul>
-                    </div>
+            selected.forEach(combo => {
+                const box = document.createElement('div');
+                box.className = 'stat-box';
+                box.innerHTML = `
+                    <div class="stat-box-label">${combo.armor}</div>
+                    <div class="stat-box-value" style="color: ${combo.color};">${combo.stat}</div>
                 `;
-            } else {
-                html += `
-                    <div class="overlap-box">
-                        <h4>✗ No Common Primary Stats</h4>
-                        <p style="color: #888; font-size: 0.85em;">Selected classes have different primary stats</p>
-                    </div>
-                `;
+                summaryStats.appendChild(box);
+            });
+        }
+
+        function updateClassesList() {
+            const classesSection = document.getElementById('classesSection');
+            const classesListContent = document.getElementById('classesListContent');
+
+            if (selectedCombinations.size === 0) {
+                classesSection.style.display = 'none';
+                return;
             }
 
-            if (commonArmor.length > 0) {
-                html += `
-                    <div class="overlap-box">
-                        <h4>✓ Common Armor Types</h4>
-                        <ul class="overlap-list">
-                            ${commonArmor.map(armor => `<li>${armor}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
-            } else {
-                html += `
-                    <div class="overlap-box">
-                        <h4>✗ No Common Armor Types</h4>
-                        <p style="color: #888; font-size: 0.85em;">Selected classes wear different armor</p>
-                    </div>
-                `;
+            // Get all classes that match the selected combinations
+            const matchingClasses = new Map();
+
+            Array.from(selectedCombinations).forEach(key => {
+                const combo = allCombinations.find(c => c.key === key);
+                combo.classes.forEach(className => {
+                    if (!matchingClasses.has(className)) {
+                        const classData = classesData.find(c => c.name === className);
+                        matchingClasses.set(className, classData);
+                    }
+                });
+            });
+
+            classesSection.style.display = 'block';
+            classesListContent.innerHTML = '';
+
+            // Sort by class name
+            const sortedClasses = Array.from(matchingClasses.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+
+            if (sortedClasses.length === 0) {
+                classesListContent.innerHTML = '<div class="no-selection">No classes match the selected combinations</div>';
+                return;
             }
 
-            if (commonRoles.length > 0) {
-                html += `
-                    <div class="overlap-box">
-                        <h4>✓ Common Roles</h4>
-                        <ul class="overlap-list">
-                            ${commonRoles.map(role => `<li>${role}</li>`).join('')}
-                        </ul>
-                    </div>
+            sortedClasses.forEach(([name, classData]) => {
+                const item = document.createElement('div');
+                item.className = 'class-item';
+                item.innerHTML = `
+                    <div class="class-item-name">${name}</div>
+                    <div class="class-item-detail"><strong>Stats:</strong> ${classData.stats.join(', ')}</div>
+                    <div class="class-item-detail"><strong>Armor:</strong> ${classData.armor.join(', ')}</div>
                 `;
-            } else {
-                html += `
-                    <div class="overlap-box">
-                        <h4>✗ No Common Roles</h4>
-                        <p style="color: #888; font-size: 0.85em;">Selected classes have different roles</p>
-                    </div>
-                `;
-            }
-
-            // Add individual class stats
-            html += `
-                <div class="overlap-box" style="grid-column: 1 / -1;">
-                    <h4>📋 Selected Classes Summary</h4>
-                    <ul class="overlap-list">
-                        ${selected.map(name => {
-                            const classData = classesData.find(c => c.name === name);
-                            return `<li><strong>${name}:</strong> ${classData.stats.join(', ')} | ${classData.armor.join(', ')}</li>`;
-                        }).join('')}
-                    </ul>
-                </div>
-            `;
-
-            container.innerHTML = html;
+                classesListContent.appendChild(item);
+            });
         }
 
         function resetSelection() {
-            selectedClasses.clear();
-            selectedStats.clear();
-            selectedArmor.clear();
+            selectedCombinations.clear();
             updateUI();
         }
 
